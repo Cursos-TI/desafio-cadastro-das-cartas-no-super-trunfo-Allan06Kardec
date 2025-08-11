@@ -1,21 +1,56 @@
 #include <stdio.h>
 
+
+
+typedef struct {
+    char estado;                 // Letra de 'A' a 'H'
+    char codigo[5];               // Ex: "A01"
+    char nomeCidade[50];          // Nome da cidade
+    int populacao;                // Número de habitantes
+    float area;                   // Área em km²
+    float pib;                    // PIB em bilhões
+    int pontosTuristicos;         // Número de pontos turísticos
+} Carta;
+
 int main() {
+    Carta cartas[2];
 
-    int populacao = 1000000;
-    float area = 2000.5;
-    float PIB = 50000.75;
-    char nome[50] = "Pernambuco";
-    char pontos_turisticos[100] = "Praia de Boa Viagem, Parque da Jaqueira, Museu do Frevo";
-    char codigo[10] = "PE123"; 
-    int numero_pontos_turisticos = 3;   
+    for (int i = 0; i < 2; i++) {
+        printf("\n--- Cadastro da Carta %d ---\n", i + 1);
 
-    printf("Estado: %s\n", nome);
-    printf("População: %d\n", populacao);
-    printf("Área: %.2f km²\n", area);
-    printf("PIB: R$ %.2f\n", PIB);
-    printf("Código: %s\n", codigo);
-    printf("Número de Pontos Turísticos: %d\n", numero_pontos_turisticos);
-    printf("Pontos Turísticos: %s\n", pontos_turisticos);   
+        printf("Estado (A-H): ");
+        scanf(" %c", &cartas[i].estado);
+
+        printf("Codigo da carta (ex: A01): ");
+        scanf(" %4s", cartas[i].codigo);
+
+        printf("Nome da cidade: ");
+        scanf(" %[^\n]", cartas[i].nomeCidade);
+
+        printf("Populacao: ");
+        scanf("%d", &cartas[i].populacao);
+
+        printf("Area (em km2): ");
+        scanf("%f", &cartas[i].area);
+
+        printf("PIB (em bilhoes de reais): ");
+        scanf("%f", &cartas[i].pib);
+
+        printf("Numero de pontos turisticos: ");
+        scanf("%d", &cartas[i].pontosTuristicos);
+    }
+
+    // Exibe as cartas
+    for (int i = 0; i < 2; i++) {
+        printf("\n--- Carta %d ---\n", i + 1);
+        printf("Estado: %c\n", cartas[i].estado);
+        printf("Codigo: %s\n", cartas[i].codigo);
+        printf("Nome da Cidade: %s\n", cartas[i].nomeCidade);
+        printf("Populacao: %d\n", cartas[i].populacao);
+        printf("Area: %.2f km²\n", cartas[i].area);
+        printf("PIB: %.2f bilhoes de reais\n", cartas[i].pib);
+        printf("Numero de Pontos Turisticos: %d\n", cartas[i].pontosTuristicos);
+    }
+
     return 0;
 }
